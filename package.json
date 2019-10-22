@@ -1,0 +1,30 @@
+{
+  "name": "virthttp.js",
+  "version": "1.0.0",
+  "description": "A JavaScript API for virthttp",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.19.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heavyeyelid/virthttp.js.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "virthttp",
+    "API",
+    "WEB"
+  ],
+  "author": "Hugo Haldi, AeroStun",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/heavyeyelid/virthttp.js/issues"
+  },
+  "homepage": "https://github.com/heavyeyelid/virthttp.js#readme"
+}
