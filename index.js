@@ -1,31 +1,11 @@
-const axios = require('axios');
+module.exports = require('./lib/virthttp');
 
-var virthttp = {};
-virthttp.req = (target, params) => {
-    target = target || '';
-    return {
-        libvirt: () => {
-            return {
-                domain: (selector) => {
-                    return new Promise((resolve, reject) => {
-                        if (!selector)
-                            reject(new SyntaxError("No selector provided"));
-                        if (selector.name && selector.uuid)
-                            reject(new SyntaxError("More than one selector provided"));
-                        function get(target, type, selector) {
-                            return(axios.get(`${target}/libvirt/domains/by-${type}/${selector}`, params));
-                        }
-                        if (selector.name)
-                            resolve(get(target, 'name', selector.name));
-                        if (selector.uuid)
-                            resolve(get(target, 'uuid', selector.uuid));
-                        reject(new SyntaxError("Bad selector"));
-                    });
-                },
-                domains: () => {
-                    return axios.get(`${target}/libvirt/domains`, params);
-                }
-            }
-        }
-    }
-}
+const virthttp = module.exports;
+let req = virthttp.req('http://127.0.0.1:8081').libvirt().domains();
+
+if(req.state !== 'ready')
+    console.log(`error: ${req.err_msg}`);
+else
+    req().then(res => {
+        console.log(res.data);
+    }).catch(err => console.error(err));
