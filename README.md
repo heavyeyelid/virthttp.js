@@ -1,2 +1,3 @@
 # virthttp.js
-A JavaScript API for virthttp
+
+A JavaScript library for virthttp
